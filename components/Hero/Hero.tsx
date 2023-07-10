@@ -38,8 +38,9 @@ const Hero1: React.FC<IHero1> = ({}) => {
         <div className="relative" id="hero">
           <Image
             // src="600x400"
-            src={`https://drive.google.com/uc?export=view&id=${data?.driveId}`}
+            // src={`https://drive.google.com/uc?export=view&id=${data?.driveId}`}
             // src="https://drive.google.com/file/d/1M-4LFYZ6xEHDEL1g85FBLqYooFRhvWYZ/view?usp=sharing"
+            src="/cat.jpg"
             // src={`https://drive.google.com/uc?export=view&id=${data?.driveId}`}
             width={600}
             height={400}
