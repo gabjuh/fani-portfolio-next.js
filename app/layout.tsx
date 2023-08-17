@@ -34,11 +34,6 @@ export default async function RootLayout({
           data.menuItems,
           data.settings
         ]} />
-        <div className="mt-10">
-          <p>home asd</p>
-          <p>{data.timeStamp}</p>
-          <p>{data.impressum[0].sheetId}</p>
-        </div>
         {children}
           <Footer data={data.settings} />
       </body>
