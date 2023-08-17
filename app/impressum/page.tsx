@@ -1,6 +1,8 @@
 import { Metadata } from "next"
 import PageContainer from "../components/PageContainer";
 import Title from "../components/Title";
+import IData from "@/interfaces/IData";
+import IImpressum from "@/interfaces/IImpressum";
 
 export const metadata: Metadata = {
   title: 'Impressum - Franciska Hajdu'
@@ -17,7 +19,7 @@ export default async function ImpressumPage() {
     return data;
   }
 
-  const data = await getData()
+  const data: IData = await getData()
 
   return (
     <PageContainer>
@@ -33,14 +35,14 @@ export default async function ImpressumPage() {
         <p>{data.impressum[0].handy}</p>
 
         <>
-          {/* {data && data.map((item, index) => {
+          {data.impressum.map((item: IImpressum, index: number) => {
             return (
               <div key={index}>
-                <h2 className="font-semibold mt-6">{item.title}</h2>
-                <p className="text-justify mt-2">{item.paragraph}</p>
+                <h2 className="font-semibold mt-6 text-lg">{item.title}</h2>
+                <p className="text-justify mt-1">{item.paragraph}</p>
               </div>
             );
-          })} */}
+          })}
         </>
       </div>
     </PageContainer>
