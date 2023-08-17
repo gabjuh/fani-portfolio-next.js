@@ -1,4 +1,4 @@
-export default interface IMenuItem {
+export default interface IMenu {
   sheetId: string;
   active: boolean;
   id: string;

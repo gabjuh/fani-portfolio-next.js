@@ -1,5 +1,6 @@
-interface ISettings {
-  homepageTitle: string;
+export default interface ISettings {
+  sheetId?: string;
+  homepageTitle?: string;
   email?: string;
   emailTooltipText?: string;
   copyright?: string;
