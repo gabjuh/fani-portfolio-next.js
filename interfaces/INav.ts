@@ -1,7 +1,7 @@
 import IMenuItem from './IMenuItem';
 
 export default interface INav {
-  menuItems: IMenuItem[];
+  // menuItems: IMenuItem[];
   selected: number;
   handleClick: (index: number) => void;
   homepageTitle?: string;
