@@ -7,6 +7,6 @@ export default interface ICV {
   driveId?: string;
   imgAlt?: string;
   imgOnSide?: 'left' | 'right';
-  text?: string;
+  text: string;
   buttonText?: string;
 }

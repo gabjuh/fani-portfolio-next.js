@@ -5,7 +5,7 @@ export default interface IAbout {
   driveId?: string;
   imgAlt?: string;
   imgLeft?: 'TRUE' | 'FALSE';
-  text?: string;
+  text: string;
   textAlign?: 'auto' | 'justify';
   buttonText?: string;
 }
