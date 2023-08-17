@@ -1,6 +1,7 @@
 import IData from "@/interfaces/IData";
 import Hero from "./components/Hero";
 import Events from "./components/Events";
+import About from "./components/About";
 
 export default async function HomePage() {
 
@@ -17,6 +18,7 @@ export default async function HomePage() {
   return (
     <main className="">
       <Hero data={data} />
+      <About data={data} />
       <Events data={data}/>
     </main>
   )
