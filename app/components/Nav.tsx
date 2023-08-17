@@ -1,20 +1,19 @@
 'use client'
 
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import INav from "@/interfaces/INav"
-// must be fetched
-// import IMenuItem from "@/interfaces/IMenuItem";
+import NavMenuItem from "./NavMenuItem";
+import TableIdContext from "@/providers/AppProvider";
+import Link from "next/link";
+import scrollToId from "@/helpers/scrollToId";
+import MoonIco from "@/assets/icos/MoonIco";
+import SunIco from "@/assets/icos/SunIco";
+import { openSheetApiUrl, tableIds } from "@/helpers/connect"; // WIP!!!
+import IMenu from '../../interfaces/IMenu';
 
-const Nav: React.FC<INav> = ({
-  menuItems,
-  homepageTitle,
-  // selected,
-  handleClick,
-  email,
-  emailTooltipText,
-  darkTheme,
-  lightTheme
-}) => {
+const Nav: React.FC<INav> = ({ data: [menu, settingsArr] }) => {
+
+  const settings = settingsArr[0];
 
   const [isTooltipOpen, setIsTooltipOpen] = React.useState(false);
   
@@ -38,13 +37,13 @@ const Nav: React.FC<INav> = ({
     return () => mediaQuery.removeEventListener('change', handleChange);
   })
   
-  useEffect(() => {    
-    if (theme === 'dark') {
-      document.documentElement.dataset.theme = darkTheme;
-    } else {
-      document.documentElement.dataset.theme = lightTheme;
-    }
-  }, [theme]);
+  // useEffect(() => {    
+  //   if (theme === 'dark') {
+  //     document.documentElement.dataset.theme = darkTheme;
+  //   } else {
+  //     document.documentElement.dataset.theme = lightTheme;
+  //   }
+  // }, [theme]);
 
   const handleToggleTheme = () => {
     if (theme === 'dark') {
@@ -54,7 +53,7 @@ const Nav: React.FC<INav> = ({
     }
   }
 
-  const tableId = useContext(TableIdContext);
+  // const tableId = useContext(TableIdContext);
 
   React.useEffect(() => {
     setTimeout(() => {
@@ -71,14 +70,13 @@ const Nav: React.FC<INav> = ({
             </label>
             {/* Dropdown menu */}
             <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-              {menuItems.map((item, index) => (
+              {menu.map((item, index) => (
                 <NavMenuItem
                   key={index}
                   index={index}
                   title={item.title}
                   link={item.link}
-                  selected={item.selected}
-                  handleClick={handleClick}
+                  // handleClick={handleClick}
                   isDropdown={true}
                   // handleClick={() => scrollToId(item.link.slice(2))} 
                 />
@@ -88,24 +86,23 @@ const Nav: React.FC<INav> = ({
           <div className="flex-1 whitespace-nowrap">
             {/* Logo/Title */}
             <Link
-              to="/"
+              href="/"
               className="btn btn-ghost normal-case text-xl"
               onClick={() => scrollToId('hero')}
               // onClick={() => handleClick(-1)}
-            >{homepageTitle}{tableId.name === 'next' && ' - ' + tableId.name.toUpperCase()}</Link>
+            >{settings.homepageTitle}</Link>
           </div>
         </div>
         <div className="hidden lg:flex">
           {/* Horisontal menu */}
           <ul className="flex flex-row px-1">
-            {menuItems.map((item, index) => (
+            {menu.map((item, index) => (
               <NavMenuItem
                 key={index}
                 index={index}
                 title={item.title}
                 link={item.link}
-                selected={item.selected}
-                handleClick={handleClick}
+                // handleClick={handleClick}
                 // handleClick={() => scrollToId(item.link.slice(2))} 
               />
             ))}
@@ -114,12 +111,12 @@ const Nav: React.FC<INav> = ({
         <div className="navbar-end">
 
           {/* Email button */}
-          <div className={`md:tooltip md:tooltip-sm mx-1 ${isTooltipOpen ? `md:tooltip-open` : ''} md:tooltip-bottom`} data-tip={emailTooltipText}>
-            <a href={`mailto:${email}`} className="btn lg:btn-md btn-sm btn-secondary text-white">@</a>
+          <div className={`md:tooltip md:tooltip-sm mx-1 ${isTooltipOpen ? `md:tooltip-open` : ''} md:tooltip-bottom`} data-tip={settings.emailTooltipText}>
+            <a href={`mailto:${settings.email}`} className="btn lg:btn-md btn-sm btn-secondary text-white">@</a>
           </div>
 
           {/* Theme toggler button */}
-          <div className={`md:tooltip md:tooltip-sm mx-1 ${isTooltipOpen ? `md:tooltip-open` : ''} md:tooltip-bottom`} data-tip={emailTooltipText}>
+          <div className={`md:tooltip md:tooltip-sm mx-1 ${isTooltipOpen ? `md:tooltip-open` : ''} md:tooltip-bottom`} data-tip={settings.emailTooltipText}>
             <button className="btn lg:btn-md btn-sm btn-secondary text-white px-[5px] lg:px-[10px]" onClick={handleToggleTheme}>
               {theme === 'light' ? <MoonIco /> : <SunIco />}
             </button>
