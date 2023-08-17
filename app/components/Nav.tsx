@@ -37,13 +37,13 @@ const Nav: React.FC<INav> = ({ data: [menu, settingsArr] }) => {
     return () => mediaQuery.removeEventListener('change', handleChange);
   })
   
-  // useEffect(() => {    
-  //   if (theme === 'dark') {
-  //     document.documentElement.dataset.theme = darkTheme;
-  //   } else {
-  //     document.documentElement.dataset.theme = lightTheme;
-  //   }
-  // }, [theme]);
+  useEffect(() => {    
+    if (theme === 'dark') {
+      document.documentElement.dataset.theme = settings.darkTheme;
+    } else {
+      document.documentElement.dataset.theme = settings.lightTheme;
+    }
+  }, [theme]);
 
   const handleToggleTheme = () => {
     if (theme === 'dark') {
