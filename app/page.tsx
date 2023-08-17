@@ -2,6 +2,7 @@ import IData from "@/interfaces/IData";
 import Hero from "./components/Hero";
 import Events from "./components/Events";
 import About from "./components/About";
+import Videos from './components/Videos';
 
 export default async function HomePage() {
 
@@ -19,7 +20,8 @@ export default async function HomePage() {
     <main className="">
       <Hero data={data} />
       <About data={data} />
-      <Events data={data}/>
+      <Events data={data} />
+      <Videos data={data} />
     </main>
   )
 }
