@@ -14,7 +14,7 @@ const NavMenuItem: React.FC<INavMenuItem> = ({
       <Link
         href={link}
         className={`mx-4 whitespace-nowrap cursor-pointer px-1 py-3`}
-        onClick={() => handleClick(index)}
+        // onClick={() => handleClick(index)}
       >
         {title}
       </Link>
