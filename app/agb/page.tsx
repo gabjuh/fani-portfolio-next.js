@@ -3,13 +3,6 @@ import { openSheetApiUrl } from '../../helpers/connect';
 import PageContainer from '../components/PageContainer';
 import Title from '../components/Title';
 
-interface IAgbData {
-  pageTitle?: string;
-  underTitle?: string;
-  title?: string;
-  paragraph?: string;
-}
-
 export default async function AgbPage() {
 
   async function getData() {
