@@ -15,7 +15,7 @@ const Footer: React.FC<IFooter> = ({ data }) => {
         <div className="text-right pr-5">
           <p className="text-[.75rem] text-gray-400">{data[0].copyright}</p>
           <p className="text-[.75rem] text-gray-400">Created by <a href="https://gaborjuhasz.de">Gábor Juhász</a></p>
-          <p className="text-[.75rem] text-gray-400"><a href="https://github.com/gabjuh/david-portfolio">a React/OpenSheet Project</a></p>
+          <p className="text-[.75rem] text-gray-400"><a href="https://github.com/gabjuh/david-portfolio">a React/NextJS Project</a></p>
         </div>
         <div className="text-left">
           <Link className="mx-2 block" href="impressum">Impressum</Link>
