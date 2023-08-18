@@ -23,7 +23,7 @@ export default async function HomePage() {
       <About data={data} />
       <Events data={data} />
       <ImageSlider data={data} />
-      {/* <Videos data={data} /> */}
+      <Videos data={data} />
     </main>
   )
 }
