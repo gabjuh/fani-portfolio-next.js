@@ -29,6 +29,7 @@ export default async function CVPage() {
           <ImageAndText
             key={index}
             driveId={item.driveId}
+            fileName={item.fileName}
             alt={item.imgAlt}
             imageLeft={item.imgOnSide?.toLowerCase() === 'left' ? true : false}
             text={item.text}

@@ -1,5 +1,6 @@
 export default interface IImageAndText {
   driveId?: string;
+  fileName?: string;
   alt?: string;
   imageLeft?: boolean;
   classNameForImg?: string;

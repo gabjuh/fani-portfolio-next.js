@@ -6,6 +6,7 @@ import ImageForText from "./ImageForText";
 
 const ImageAndText: React.FC<IImageAndText> = ({
   driveId,
+  fileName,
   alt,
   classNameForImg,
   imageLeft,
@@ -17,7 +18,7 @@ const ImageAndText: React.FC<IImageAndText> = ({
   return (
     <>
       <div className={`flex ${imageLeft ? 'flex-col' : 'flex-col-reverse'} md:flex-row lg:my-16 my-4`}>
-        {imageLeft && <ImageForText driveId={driveId || ''} alt={alt || 'image'} classNameForImg={classNameForImg} />}
+        {imageLeft && <ImageForText fileName={fileName} driveId={driveId || ''} alt={alt || 'image'} classNameForImg={classNameForImg} />}
         <div className={`w-full md:w-1/2 flex flex-col ${!imageLeft ? 'items-end' : ''} justify-center`}>
           <div 
             className={`${imageLeft ? textAlign === 'justify' ? 'md:text-justify' : 'md:text-left' : textAlign === 'justify' ? 'md:text-justify' : 'md:text-right'} md:ml-8 lg:ml-0 md:mr-8 lg:mr-0 text-center leading-8`}
@@ -39,7 +40,7 @@ const ImageAndText: React.FC<IImageAndText> = ({
           }
 
         </div>
-        {!imageLeft && <ImageForText driveId={driveId || ''} alt={alt || ''} classNameForImg={classNameForImg} />}
+        {!imageLeft && <ImageForText fileName={fileName} driveId={driveId || ''} alt={alt || ''} classNameForImg={classNameForImg} />}
       </div>
 
     </>

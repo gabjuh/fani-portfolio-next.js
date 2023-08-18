@@ -10,6 +10,7 @@ const About = ({ data } : {data: IData}) => {
 
       <ImageAndText
         driveId={data.about[0].driveId}
+        fileName={data.about[0].fileName}
         alt={data.about[0].imgAlt}
         imageLeft={data.about[0].imgLeft === 'TRUE' ? true : false}
         classNameForImg="rounded-full"

@@ -2,6 +2,7 @@ import IImageForText from "@/interfaces/IImageForText";
 import Image from "next/image";
 
 const ImageForText: React.FC<IImageForText> = ({
+  fileName,
   driveId,
   alt,
   classNameForImg,
@@ -10,8 +11,7 @@ const ImageForText: React.FC<IImageForText> = ({
     <>
       <div className="w-full md:w-1/2">
         <Image 
-          // src={`https://drive.google.com/uc?export=view&id=${driveId}`}
-          src={`https://api.franciskahajdu.de/img/${driveId}`}
+          src={`https://api.franciskahajdu.de/img/${fileName}`}
           width="400"
           height="200"
           alt={alt} 
