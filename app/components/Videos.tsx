@@ -4,7 +4,7 @@ import Title from './Title';
 import IVideos from '../../interfaces/IVideos';
 import IData from '@/interfaces/IData';
 
-const Videos = ({ data } : { data: IData[]}) => {
+const Videos = ({ data }: { data: IData; }) => {
 
   return (
     <>
