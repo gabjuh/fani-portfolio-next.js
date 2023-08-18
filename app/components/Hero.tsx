@@ -3,15 +3,15 @@ import IData from '@/interfaces/IData';
 import Image from 'next/image';
 import UpcomingEvents from './UpcomingEvents';
 
-const Hero: React.FC<any> = ({ data }) => {
+const Hero = ({ data } : {data: IData }) => {
 
-  const driveId = '1En33PhpCjDoxYl0mfFsX_lo4fRv-EwUt';
+  const hero = data.hero
 
   return (
       <>
         <div className="relative h-[90vh] mt-[60px]" id="hero">
           <Image 
-            src={`https://drive.google.com/uc?export=view&id=${driveId}`}
+            src={`https://api.franciskahajdu.de/img/${hero[0].fileName}`}
             alt="hero image"
             fill
             sizes="(min-width: 808px) 50vw, 100vw"

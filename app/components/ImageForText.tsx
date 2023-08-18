@@ -10,7 +10,8 @@ const ImageForText: React.FC<IImageForText> = ({
     <>
       <div className="w-full md:w-1/2">
         <Image 
-          src={`https://drive.google.com/uc?export=view&id=${driveId}`}
+          // src={`https://drive.google.com/uc?export=view&id=${driveId}`}
+          src={`https://api.franciskahajdu.de/img/${driveId}`}
           width="400"
           height="200"
           alt={alt} 
