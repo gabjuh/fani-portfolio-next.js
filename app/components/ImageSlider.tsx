@@ -19,22 +19,16 @@ const ImageSlider = ({ data } : {data: IData}) => {
             >
               <Image 
                 src={`https://api.franciskahajdu.de/img/${item.fileName}`}
+                // placeholder="blur"
                 alt={`Slider Image ${index}`}
                 height="600"
                 width="600"
+                className="mx-auto mt-28"
                 style={{
                   height: '500px',
                   objectFit: 'contain'
                 }}
               />  
-              {/* <SliderImage
-                driveId={item.driveId}
-                alt={item.imgAlt}
-                // className={``}
-                containerWidth={getElementWidth('#carousel')}
-                index={index}
-              /> */}
-
             </div>
           );
         })
