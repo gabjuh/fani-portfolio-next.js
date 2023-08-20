@@ -12,6 +12,7 @@ const ImageForText: React.FC<IImageForText> = ({
       <div className="w-full md:w-1/2">
         <Image 
           src={`https://api.franciskahajdu.de/img/${fileName}`}
+          // placeholder="blur"
           width="400"
           height="200"
           alt={alt} 
