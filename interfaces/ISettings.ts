@@ -3,6 +3,7 @@ export default interface ISettings {
   homepageTitle?: string;
   email?: string;
   emailTooltipText?: string;
+  themeButtonTooltipText: string;
   copyright?: string;
   darkTheme?: string;
   lightTheme?: string;
