@@ -13,7 +13,7 @@ const About = ({ data } : {data: IData}) => {
         fileName={data.about[0].fileName}
         alt={data.about[0].imgAlt}
         imageLeft={data.about[0].imgLeft === 'TRUE' ? true : false}
-        classNameForImg="rounded-full"
+        classNameForImg="rounded-md"
         text={data.about[0].text}
         textAlign={data.about[0].textAlign}
         buttonText={data.about[0].buttonText}
