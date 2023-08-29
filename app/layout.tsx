@@ -18,7 +18,9 @@ export default async function RootLayout({
 }) {
 
   async function getData() {
-    const res = await fetch('https://api.franciskahajdu.de/data.json')
+    const res = await fetch('https://api.franciskahajdu.de/data.json',
+      { cache: 'no-store' }
+    )
     if (!res.ok) {
       throw new Error('Failed to fetch data')
     }
