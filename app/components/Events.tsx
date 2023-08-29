@@ -10,34 +10,48 @@ export default function Events ({ data }: {data: IData}) {
       const dateArray = date.split('.');
       return `${dateArray[1]}/${dateArray[0]}/${dateArray[2]}`;
     }
-    return '1900.01.01';
+    return '01.01.1900';
   };
 
-  const getActualEvents = () => data.concerts.filter((event) => {
-    if (event) {
-      const date = new Date(stringToDate(event ? event.startDate : ''));
-      const today = new Date();
-      return date >= today;
-    }
-  });
+  const getUpcomingEvents = () => {
+    const upcomingEvents = data.concerts.filter((event) => {
+      if (event) {
+        const date = new Date(stringToDate(event ? event.startDate : ''));
+        const today = new Date();
+        return date >= today;
+      }
+    });
 
-  const getPastEvents = () => data.concerts.filter((event) => {
-    if (event) {
-      const date = new Date(stringToDate(event ? event.startDate : ''));
-      const today = new Date();
-      return date < today;
-    }
-  });
+    // Sort the upcoming events in an ascending order
+    upcomingEvents.sort((a: any, b: any) => new Date(stringToDate(a.startDate)).getTime() - new Date(stringToDate(b.startDate)).getTime());
+
+    return upcomingEvents;
+  };
+
+  const getPastEvents = () => {
+    const pastEvents = data.concerts.filter((event) => {
+      if (event) {
+        const date = new Date(stringToDate(event ? event.startDate : ''));
+        const today = new Date();
+        return date < today;
+      }
+    });
+
+    // Sort the past events in a descending order
+    pastEvents.sort((a: any, b: any) => new Date(stringToDate(b.startDate)).getTime() - new Date(stringToDate(a.startDate)).getTime());
+
+    return pastEvents;
+  };
 
   return (
     <>
       <Title title={data.concerts[0].pageTitle} />
       <div className="lg:w-[900px] xl:w-[1200px] w-full mx-auto">
-        {data && getActualEvents()?.map((event, index) => (
+        {data && getUpcomingEvents()?.map((event, index) => (
           <React.Fragment key={`actual-${index}`}>
             {event.active === '1' && (
               <EventItem
-                data={data.concerts[index]}
+                data={event}
                 isPast={false}
               />
             )}
@@ -49,7 +63,7 @@ export default function Events ({ data }: {data: IData}) {
             <React.Fragment key={`past-${index}`}>
               {event.active === '1' && (
                 <EventItem
-                  data={data.concerts[index]}
+                  data={event}
                   isPast={true}
                 />
               )}
