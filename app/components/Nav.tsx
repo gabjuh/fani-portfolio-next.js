@@ -116,14 +116,12 @@ const Nav: React.FC<INav> = ({ data: [menu, settingsArr] }) => {
           </div>
 
           {/* Theme toggler button */}
-          <div className={`md:tooltip md:tooltip-sm mx-1 ${isTooltipOpen ? `md:tooltip-open` : ''} md:tooltip-bottom`} data-tip={settings.emailTooltipText}>
+          <div className={`md:tooltip md:tooltip-sm mx-1 ${isTooltipOpen ? `md:tooltip-open` : ''} md:tooltip-bottom`} data-tip={settings.themeButtonTooltipText}>
             <button className="btn lg:btn-md btn-sm btn-secondary text-white px-[5px] lg:px-[10px]" onClick={handleToggleTheme}>
               {theme === 'light' ? <MoonIco /> : <SunIco />}
             </button>
           </div>
-
         </div>
-        
       </div>
     </>
   )

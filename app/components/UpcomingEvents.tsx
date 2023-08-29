@@ -9,7 +9,7 @@ async function UpcomingEvents({ data } : { data: IData}) {
   const eventData: IConcerts[] = data.concerts;
   const eventLimit = 6;
 
-  await console.log(eventData)
+  // await console.log(eventData)
 
   const stringToDate = (date: string | undefined) => {
     if (date) {
@@ -21,10 +21,10 @@ async function UpcomingEvents({ data } : { data: IData}) {
 
   async function comingEventsData() {
     return await Object.keys(eventData)
-    .filter((eventKey) => {
-      const date = new Date(stringToDate(eventKey));
-      const today = new Date();
-      return date >= today;
+      .filter((eventKey) => {
+        const date = new Date(stringToDate(eventKey));
+        const today = new Date();
+        return date >= today;
     })
     .map((eventKey: any) => eventData[eventKey]);
   };
@@ -32,7 +32,9 @@ async function UpcomingEvents({ data } : { data: IData}) {
   async function onClickEventHandler(eventId: string) {
     scrollToId(`event-main-${eventId}`);
   };
-  
+
+  const eventsdata = await comingEventsData();
+
   return (
     <>
       <UpcomingEventsWrapper>
@@ -42,9 +44,10 @@ async function UpcomingEvents({ data } : { data: IData}) {
         <h3 className="text-xl lg:block hidden">Upcoming Concerts:</h3>
         <ul className="mt-2">
 
-          {comingEventsData().map((event: any, index: number) => {
+          {eventsdata.map((event: any, index: number) => {
             const date = new Date(stringToDate(event.startDate));
             const today = new Date();
+            console.log({ event })
             if (index < eventLimit && date >= today) {
               return (
                 <li className="group text-sm mt-5 cursor-pointer" key={`event-hero-${index}`} onClick={() => onClickEventHandler(event.id)}>
@@ -66,6 +69,7 @@ async function UpcomingEvents({ data } : { data: IData}) {
               );
             }
           })}
+
         </ul>
         <div className="w-full">
           {/* <button onClick={() => scrollToId('concerts')} className="btn btn-secondary btn-sm mt-6">
