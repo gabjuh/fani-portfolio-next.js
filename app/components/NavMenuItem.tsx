@@ -1,3 +1,5 @@
+'use client'
+
 import INavMenuItem from "@/interfaces/INavMenuItem";
 import Link from "next/link";
 
@@ -10,11 +12,11 @@ const NavMenuItem: React.FC<INavMenuItem> = ({
   isDropdown
 }) => {
   return (
-    <li>
+    <li className={isDropdown && selected ? `bg-secondary` : ''}>
       <Link
         href={link}
         className={`mx-4 whitespace-nowrap cursor-pointer px-1 py-3`}
-        // onClick={() => handleClick(index)}
+        onClick={(e) => handleClick(e, link)}
       >
         {title}
       </Link>
