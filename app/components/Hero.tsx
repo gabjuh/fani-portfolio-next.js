@@ -33,7 +33,7 @@ export default async function Hero({ data }: { data: IData; }) {
               objectFit: 'cover'
             }}
           />
-        {/* <UpcomingEvents data={data} /> */}
+        <UpcomingEvents data={data.concerts} />
         </div>
       </>
   )
