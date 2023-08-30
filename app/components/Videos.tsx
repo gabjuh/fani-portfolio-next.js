@@ -8,7 +8,7 @@ const Videos = ({ data }: { data: IData; }) => {
 
   return (
     <>
-      <Title title="Videos" />
+      <Title title="Videos" id="videos" />
 
       <div className="flex flex-row overflow-auto max-h-[800px] mb-36 px-10">
         {data.videos.map((item: IVideos, index: number) => {
