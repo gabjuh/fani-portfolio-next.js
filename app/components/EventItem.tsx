@@ -27,7 +27,7 @@ const EventItem = ({ data, isPast } : {data: IConcerts, isPast: boolean }) => {
 
   return (
     <>
-      <div className="relative cursor-default lg:pt-[1rem] pt-0 lg:pb-[80px] pb-[30px]" id={`event-main-${data.id}`}>
+      <div className="relative cursor-default lg:pt-[80px] pt-0 lg:pb-[30px] pb-[30px]" id={`event-main-${data.id}`}>
         <div className="sm:flex sm:flex-row mx-auto max-w-[900px]">
           {/* DATE */}
           <div className={`relative pt-3 lg:w-[50px] sm:pl-2 ${isPast ? 'sm:border-gray-400' : 'border-primary'} sm:border-l-[25px] sm:border-b-[0px] sm:rounded-[10px] sm:min-h-[8rem] text-center`}>
@@ -124,7 +124,7 @@ const EventItem = ({ data, isPast } : {data: IConcerts, isPast: boolean }) => {
                           <div className="inline-block translate-y-[5px]">
                             <MapIco />
                           </div>
-                          <a href={data.locationLink} className="text-2xl text-secondary hover:underline translate-y-[5px]">
+                          <a href={data.locationLink} className="text-2xl text-secondary hover:underline translate-y-[5px]" target="_blank">
                             <span className="ml-3">{data.location}</span>
                           </a>
                         </>
