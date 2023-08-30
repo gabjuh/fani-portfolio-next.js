@@ -3,7 +3,7 @@ export default interface INavMenuItem {
   title: string;
   link: string;
   selected?: boolean;
-  handleClick?: (index: number) => void;
+  handleClick: (event: any, link: string) => void;
   isDropdown?: boolean;
   // handleClick: () => void;
 }
