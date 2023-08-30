@@ -9,7 +9,7 @@ const ImageSlider = ({ data } : {data: IData}) => {
 
   return (
     <>
-      <div className="carousel" id="carousel">
+      <div className="carousel" id="gallery">
         {slider.map((item, index) => {
           return (
             <div
