@@ -2,3 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+
+#dropdown li a,
+#dropdown li a:hover,
+#dropdown li a:active {
+  background-color: transparent !important;
+}
