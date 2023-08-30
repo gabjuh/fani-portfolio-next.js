@@ -1,15 +1,13 @@
+'use client'
+
 import scrollToId from '@/helpers/scrollToId';
 import UpcomingEventsWrapper from './UpcomingEventsWrapper';
 import Title from './Title';
 import IConcerts from '@/interfaces/IConcerts';
-import IData from '@/interfaces/IData';
 
-async function UpcomingEvents({ data } : { data: IData}) {
+function UpcomingEvents({ data }: { data: IConcerts[]; }) {
 
-  const eventData: IConcerts[] = data.concerts;
-  const eventLimit = 6;
-
-  // await console.log(eventData)
+  const eventLimit = 5;
 
   const stringToDate = (date: string | undefined) => {
     if (date) {
@@ -19,38 +17,28 @@ async function UpcomingEvents({ data } : { data: IData}) {
     return '1900.01.01';
   };
 
-  async function comingEventsData() {
-    return await Object.keys(eventData)
-      .filter((eventKey) => {
-        const date = new Date(stringToDate(eventKey));
-        const today = new Date();
-        return date >= today;
-    })
-    .map((eventKey: any) => eventData[eventKey]);
-  };
-
-  async function onClickEventHandler(eventId: string) {
+  function onClickEventHandler(eventId: string) {
     scrollToId(`event-main-${eventId}`);
   };
 
-  const eventsdata = await comingEventsData();
+  data.sort((a: any, b: any) => new Date(stringToDate(a.startDate)).getTime() - new Date(stringToDate(b.startDate)).getTime());
 
   return (
     <>
       <UpcomingEventsWrapper>
         <div className="lg:hidden">
-          <Title title="Upcoming Concerts" id="concerts" />
+          <Title title="Upcoming Concerts" />
         </div>
-        <h3 className="text-xl lg:block hidden">Upcoming Concerts:</h3>
+        <h3 className="text-xl lg:block hidden pl-2">Upcoming Concerts:</h3>
         <ul className="mt-2">
 
-          {eventsdata.map((event: any, index: number) => {
+          {data.map((event: any, index: number) => {
             const date = new Date(stringToDate(event.startDate));
             const today = new Date();
-            console.log({ event })
-            if (index < eventLimit && date >= today) {
+
+            if (date >= today && index > 5) {
               return (
-                <li className="group text-sm mt-5 cursor-pointer" key={`event-hero-${index}`} onClick={() => onClickEventHandler(event.id)}>
+                <li className="group text-sm mt-1 cursor-pointer hover:bg-gray-500/[.3] transition-all ease-in-out duration-200 rounded-lg p-2" key={`event-hero-${index}`} onClick={() => onClickEventHandler(event.id)}>
                   {/* Title */}
                   <p className="group-hover:text-secondary transition-all ease-in-out duration-200">
                     <span className="text-xl font-bold uppercase">{event.title}</span>
@@ -72,9 +60,9 @@ async function UpcomingEvents({ data } : { data: IData}) {
 
         </ul>
         <div className="w-full">
-          {/* <button onClick={() => scrollToId('concerts')} className="btn btn-secondary btn-sm mt-6">
+          <button onClick={() => scrollToId('concerts')} className="btn btn-secondary btn-sm mt-6">
             see all events
-          </button> */}
+          </button>
         </div>
       </UpcomingEventsWrapper>
     </>
