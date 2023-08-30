@@ -45,7 +45,7 @@ export default function Events ({ data }: {data: IData}) {
 
   return (
     <>
-      <Title title={data.concerts[0].pageTitle} />
+      <Title title={data.concerts[0].pageTitle} id="concerts" />
       <div className="lg:w-[900px] xl:w-[1200px] w-full mx-auto">
         {data && getUpcomingEvents()?.map((event, index) => (
           <React.Fragment key={`actual-${index}`}>
