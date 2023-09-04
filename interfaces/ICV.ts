@@ -7,6 +7,10 @@ export default interface ICV {
   driveId?: string;
   imgAlt?: string;
   imgOnSide?: 'left' | 'right';
-  text: string;
-  buttonText?: string;
+  textEn: string;
+  textDe: string;
+  textHu: string;
+  buttonTextEn?: string;
+  buttonTextDe?: string;
+  buttonTextHu?: string;
 }
