@@ -74,7 +74,7 @@ const EventItem = ({ data, isPast } : {data: IConcerts, isPast: boolean }) => {
           {/* TEXTS */}
           <div className="sm:ml-6 py-4 lg:ml-[150px] sm:text-left text-center max-w-[900px]">
             {/* Band and Title */}
-            <h3 className={`text-3xl uppercase font-semibold ${isPast ? 'border-gray-400' : 'border-primary'} border-b-[5px] sm:border-none pb-2`}>{data.title}</h3>
+            <h3 className={`text-3xl uppercase font-semibold ${isPast ? 'border-gray-400' : 'border-primary'} border-b-[5px] sm:border-none pb-2`}>{data.titleEn}</h3>
             <h3 className="text-2xl font-semibold sm:mb-0 mb-2 mt-2">
               {!data.bandLink ? data.band :
                 <a className="text-secondary font-semibold hover:underline" href={data.bandLink} target="_blank">{data.band}</a>
@@ -136,7 +136,7 @@ const EventItem = ({ data, isPast } : {data: IConcerts, isPast: boolean }) => {
             </div>
 
             {/* Category */}
-            <div className={`badge text-sm ${isPast ? 'bg-gray-400 border-gray-400' : 'badge-primary'} rounded-full font-semibold`}>{data.category}</div>
+            <div className={`badge text-sm ${isPast ? 'bg-gray-400 border-gray-400' : 'badge-primary'} rounded-full font-semibold`}>{data.categoryEn}</div>
           </div>
         </div>
       </div>
