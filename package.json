@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "upload": "bash ./uploadDev.sh",
+    "uploadPublic": "bash ./uploadPublic.sh",
+    "deploy": "npm run build && npm run upload",
+    "deployPublic": "npm run build && npm run uploadPublic"
   },
   "dependencies": {
     "@types/node": "20.4.1",
@@ -21,6 +25,7 @@
     "react-markdown": "^8.0.7",
     "react-youtube": "^10.1.0",
     "remark-gfm": "^3.0.1",
+    "supports-color": "^8.1.1",
     "tailwindcss": "3.3.2",
     "typescript": "5.1.6"
   },
