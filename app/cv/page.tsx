@@ -32,7 +32,7 @@ export default async function CVPage() {
             fileName={item.fileName}
             alt={item.imgAlt}
             imageLeft={item.imgOnSide?.toLowerCase() === 'left' ? true : false}
-            text={item.text}
+            text={item.textEn}
           />
         );
       })}
@@ -43,7 +43,7 @@ export default async function CVPage() {
           href="/#about"
           // onClick={handleClick ? () => handleClick(1) : () => null}
         >
-          {cv[0].buttonText}
+          {cv[0].buttonTextEn}
         </Link>
       </p>
 
