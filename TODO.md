@@ -9,9 +9,19 @@
 [X] Összekötni az api-val az oldalt
 [X] Konzertek szortirozasat kijavitani
 [X] Konzerteket növekvö/csökkenö sorrendbe!!
+[X] Menu animacio, selected menu style!!!
+[!] Upcoming concerts beallitani a felteteleket, sorrendet
+  [X] Hover style, positioning of targets
 
-[ ] !!! Multi language stuff
+[x] !!! Multi language stuff - sajat modon.. 
+  [!] WIP Language selection in Nav.tsx, ujratöltes utan elveszik a beallitas
   [ ] A tablazatot mielöbb hozza igazitani
+  
 [ ] Fotokat összeszedni jo minösegben
-[ ] Szineket veglegesiteni a fotok alapjak
 [ ] Deploy script-eket beallitani a next-hez es a public-hoz
+[ ] Szineket veglegesiteni a fotok alapjak
+
+Problemak:
+[ ] NAV
+  [ ] Theme button ujra aktivalni
+  [ ] Language button ujra aktivalni
