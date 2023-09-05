@@ -18,7 +18,7 @@ const ImageSlider = ({ data } : {data: IData}) => {
               className={`carousel-item w-full drop-shadow-md`}
             >
               <Image 
-                src={`https://api.franciskahajdu.de/img/${item.fileName}`}
+                src={`https://${process.env.NEXT_PUBLIC_BACKEND_API}/img/${item.fileName}`}
                 // placeholder="blur"
                 alt={`Slider Image ${index}`}
                 height="600"

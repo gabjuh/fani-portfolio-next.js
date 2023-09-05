@@ -23,7 +23,7 @@ export default async function Hero({ data }: { data: IData; }) {
         <Image
           // src={`https://api.franciskahajdu.de/img/thumbnails/${getFilenameWithThumbnails()}`}
           // blurDataURL={`https://api.franciskahajdu.de/img/thumbnails/${getFilenameWithThumbnails()}`}
-          src={`https://api.franciskahajdu.de/img/${hero[0].fileName}`}
+          src={`https://${process.env.NEXT_PUBLIC_BACKEND_API}/img/${hero[0].fileName}`}
           // src={`https://api.franciskahajdu.de/img/franciska_hajdu_sei.png`}
           // src={`https://api.franciskahajdu.de/img/test.jpeg`}
           // placeholder="blur"

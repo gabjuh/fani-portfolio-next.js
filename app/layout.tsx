@@ -18,8 +18,8 @@ export default async function RootLayout({
 }) {
 
   async function getData() {
-    const res = await fetch('https://api.franciskahajdu.de/data.json',
-      // { cache: 'no-store' }
+    const res = await fetch(`https://${process.env.NEXT_PUBLIC_BACKEND_API}/data.json`,
+      { cache: 'no-store' }
     )
     if (!res.ok) {
       throw new Error('Failed to fetch data')

@@ -6,7 +6,7 @@ import Title from '../components/Title';
 export default async function AgbPage() {
 
   async function getData() {
-    const res = await fetch('https://api.franciskahajdu.de/data.json')
+    const res = await fetch(`https://${process.env.NEXT_PUBLIC_BACKEND_API}/data.json`)
     if (!res.ok) {
       throw new Error('Failed to fetch data')
     }
