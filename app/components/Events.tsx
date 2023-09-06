@@ -43,32 +43,47 @@ export default function Events ({ data }: {data: IData}) {
     return pastEvents;
   };
 
+  const comingEvents = getUpcomingEvents();
+  const isAnyUpcomingEvents = comingEvents.some(event => event.active === '1');
+
+  const pastEvents = getPastEvents();
+  const isAnyPastEvents = pastEvents.some(event => event.active === '1');
+
   return (
     <>
-      <Title title={data.concerts[0].pageTitle} id="concerts" />
-      <div className="lg:w-[900px] xl:w-[1200px] w-full mx-auto">
-        {data && getUpcomingEvents()?.map((event, index) => (
-          <React.Fragment key={`actual-${index}`}>
-            {event.active === '1' && (
-              <EventItem
-                data={event}
-                isPast={false}
-              />
-            )}
-          </React.Fragment>
-        ))}
-
-        <Title title={"Past Concerts"} />
-          {data && getPastEvents()?.map((event, index) => (
-            <React.Fragment key={`past-${index}`}>
+      <div className="mb-32">
+        <Title title={data.concerts[0].pageTitle} id="concerts" />
+        <div className="lg:w-[900px] xl:w-[1200px] w-full mx-auto">
+          {data && getUpcomingEvents()?.map((event, index) => (
+            <React.Fragment key={`actual-${index}`}>
               {event.active === '1' && (
                 <EventItem
                   data={event}
-                  isPast={true}
+                  isPast={false}
                 />
               )}
+              {!isAnyUpcomingEvents && (
+                <p className="text-center mt-5">Stay tuned! :-)</p>
+              )}
             </React.Fragment>
-        ))}
+          ))}
+
+          {isAnyPastEvents &&
+            <>
+            <Title title={"Past Concerts"} />
+            {data && pastEvents?.map((event, index) => (
+              <React.Fragment key={`past-${index}`}>
+                {event.active === '1' && (
+                  <EventItem
+                    data={event}
+                    isPast={true}
+                  />
+                )}
+              </React.Fragment>
+            ))
+              }
+            </>}
+        </div>
       </div>
     </>
   );
