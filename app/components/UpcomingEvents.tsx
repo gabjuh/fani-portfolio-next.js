@@ -23,6 +23,8 @@ function UpcomingEvents({ data }: { data: IConcerts[]; }) {
 
   data.sort((a: any, b: any) => new Date(stringToDate(a.startDate)).getTime() - new Date(stringToDate(b.startDate)).getTime());
 
+  const isAnyUpcomingEvents = data.some(event => event.active === '1');
+
   return (
     <>
       <UpcomingEventsWrapper>
@@ -31,6 +33,8 @@ function UpcomingEvents({ data }: { data: IConcerts[]; }) {
         </div>
         <h3 className="text-xl lg:block hidden pl-2">Upcoming Concerts:</h3>
         <ul className="mt-2">
+
+          {!isAnyUpcomingEvents && (<p className="mt-4 ml-2">Stay tuned! :-)</p>)}
 
           {data.map((event: any, index: number) => {
             const date = new Date(stringToDate(event.startDate));
@@ -60,7 +64,7 @@ function UpcomingEvents({ data }: { data: IConcerts[]; }) {
 
         </ul>
         <div className="w-full">
-          <button onClick={() => scrollToId('concerts')} className="btn btn-secondary btn-sm mt-6">
+          <button onClick={() => scrollToId('concerts')} className="btn btn-secondary btn-sm mt-5 ml-2">
             see all events
           </button>
         </div>
