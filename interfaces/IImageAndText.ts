@@ -1,4 +1,5 @@
 export default interface IImageAndText {
+  title?: string;
   driveId?: string;
   fileName?: string;
   alt?: string;
