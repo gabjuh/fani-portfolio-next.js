@@ -1,4 +1,3 @@
-import Title from './Title';
 import ImageAndText from './ImageAndText';
 import IData from '@/interfaces/IData';
 
@@ -6,9 +5,10 @@ const About = ({ data } : {data: IData}) => {
 
   return (
     <div className="mb-36">
-      <Title title={data.about[0].pageTitle} id="about-me" />
+      {/* <Title title={data.about[0].pageTitle} id="about-me" /> */}
 
       <ImageAndText
+        title={data.about[0].pageTitle}
         driveId={data.about[0].driveId}
         fileName={data.about[0].fileName}
         alt={data.about[0].imgAlt}
