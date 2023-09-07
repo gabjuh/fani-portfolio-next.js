@@ -30,7 +30,8 @@ export default async function RootLayout({
   const data = await getData();
 
   return (
-    <html lang="en" data-theme="dark">
+    // <html lang="en" data-theme="dark">
+    <html lang="en" data-theme="autumn">
       <body className={inter.className}>
         <Nav data={[
           data.menuItems,
