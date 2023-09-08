@@ -2,6 +2,7 @@ import IData from '@/interfaces/IData';
 import Image from 'next/image';
 import getBase64 from '@/helpers/getPlaiceholder';
 import UpcomingEvents from './UpcomingEvents';
+import ParallaxBannerImage from './ParallaxBannerImage';
 
 export default async function Hero({ data }: { data: IData; }) {
 
@@ -20,6 +21,11 @@ export default async function Hero({ data }: { data: IData; }) {
   return (
     <>
       <div className="relative h-[90vh] mt-[60px]" id="hero">
+
+        {/* <ParallaxBannerImage
+          imgUrl={`https://${process.env.NEXT_PUBLIC_BACKEND_API}/img/${hero[0].fileName}`}
+        /> */}
+
         <Image
           // src={`https://api.franciskahajdu.de/img/thumbnails/${getFilenameWithThumbnails()}`}
           // blurDataURL={`https://api.franciskahajdu.de/img/thumbnails/${getFilenameWithThumbnails()}`}
