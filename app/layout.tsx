@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
+import { ParallaxProvider } from 'react-scroll-parallax'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -31,6 +32,7 @@ export default async function RootLayout({
 
   return (
     // <html lang="en" data-theme="dark">
+    // <ParallaxProvider>
     <html lang="en" data-theme="autumn">
       <body className={inter.className}>
         <Nav data={[
@@ -41,5 +43,6 @@ export default async function RootLayout({
           <Footer data={data.settings} />
       </body>
     </html>
+    // </ParallaxProvider>
   )
 }
