@@ -21,9 +21,27 @@ function UpcomingEvents({ data }: { data: IConcerts[]; }) {
     scrollToId(`event-main-${eventId}`);
   };
 
-  data.sort((a: any, b: any) => new Date(stringToDate(a.startDate)).getTime() - new Date(stringToDate(b.startDate)).getTime());
+  const today = new Date();
 
-  const isAnyUpcomingEvents = data.some(event => event.active === '1');
+  const getUpcomingEvents = () => {
+    const upcomingEvents = data.filter((event) => {
+      if (event) {
+        const date = new Date(stringToDate(event ? event.startDate : ''));
+        return date >= today;
+      }
+    });
+
+    // Sort the upcoming events in an ascending order
+    upcomingEvents.sort((a: any, b: any) => new Date(stringToDate(a.startDate)).getTime() - new Date(stringToDate(b.startDate)).getTime());
+
+    return upcomingEvents;
+  };
+
+  const comingEvents = getUpcomingEvents();
+  const isAnyUpcomingEvents = comingEvents.some(event => {
+    const date = new Date(stringToDate(event.startDate));
+    return event.active === '1' && date >= today;
+  });
 
   return (
     <>
@@ -36,16 +54,14 @@ function UpcomingEvents({ data }: { data: IConcerts[]; }) {
 
           {!isAnyUpcomingEvents && (<p className="mt-4 ml-2">Stay tuned! :-)</p>)}
 
-          {data.map((event: any, index: number) => {
-            const date = new Date(stringToDate(event.startDate));
-            const today = new Date();
-
-            if (date >= today && index > 5) {
+          {comingEvents.map((event: any, index: number) => {
+            console.log(index);
+            if (index < 5) {
               return (
                 <li className="group text-sm mt-1 cursor-pointer hover:bg-gray-500/[.3] transition-all ease-in-out duration-200 rounded-lg p-2" key={`event-hero-${index}`} onClick={() => onClickEventHandler(event.id)}>
                   {/* Title */}
                   <p className="group-hover:text-secondary transition-all ease-in-out duration-200">
-                    <span className="text-xl font-bold uppercase">{event.title}</span>
+                    <span className="text-xl font-bold uppercase">{event.titleEn}</span>
                   </p>
                   {/* Band */}
                   <p>
@@ -56,7 +72,7 @@ function UpcomingEvents({ data }: { data: IConcerts[]; }) {
                     <span className="font-bold">{event.startDate}</span> {event.startTime},
                     <span className="font-extralight"> {event.location}</span>
                   </p>
-                  {index < eventLimit - 1 && <hr className="mt-4 opacity-40" />}
+                  {index < eventLimit - 1 && comingEvents.length != 1 && index !== comingEvents.length - 1 && <hr className="mt-5 opacity-40" />}
                 </li>
               );
             }
