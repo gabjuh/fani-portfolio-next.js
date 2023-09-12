@@ -54,7 +54,7 @@ export default function Events ({ data }: {data: IData}) {
       <div className="mb-32">
         <Title title={data.concerts[0].pageTitle} id="concerts" />
         <div className="lg:w-[900px] xl:w-[1200px] w-full mx-auto">
-          {data && getUpcomingEvents()?.map((event, index) => (
+          {data && comingEvents?.map((event, index) => (
             <React.Fragment key={`actual-${index}`}>
               {event.active === '1' && (
                 <EventItem
