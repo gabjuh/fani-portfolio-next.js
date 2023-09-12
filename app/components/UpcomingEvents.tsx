@@ -56,7 +56,10 @@ function UpcomingEvents({ data }: { data: IConcerts[]; }) {
 
           {comingEvents.map((event: any, index: number) => {
             console.log(index);
-            if (index < 5) {
+
+            const date = new Date(stringToDate(event.startDate));
+
+            if (index < 5 && event.active === '1' && date >= today) {
               return (
                 <li className="group text-sm mt-1 cursor-pointer hover:bg-gray-500/[.3] transition-all ease-in-out duration-200 rounded-lg p-2" key={`event-hero-${index}`} onClick={() => onClickEventHandler(event.id)}>
                   {/* Title */}
