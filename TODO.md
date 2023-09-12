@@ -15,13 +15,32 @@
 
 [x] !!! Multi language stuff - sajat modon.. 
   [!] WIP Language selection in Nav.tsx, ujratöltes utan elveszik a beallitas
-  [ ] A tablazatot mielöbb hozza igazitani
+  [X] A tablazatot mielöbb hozza igazitani
   
+OTTHON:
 [ ] Fotokat összeszedni jo minösegben
-[ ] Deploy script-eket beallitani a next-hez es a public-hoz
 [ ] Szineket veglegesiteni a fotok alapjak
+[ ] Hero image to parallax WIP (ParallaxProvider should be in a client side component)
+
+[ ] Set deploy production / next branche
+[ ] Image Gallery
+
+Mobile view:
+[-] logo közepre rendez
+[X] nyomott ikon
+[ ] events - lehetne picit kisebb es finomabb font
+[ ] elrejteni a past concerts veget es gombbal megmutatni
+[X] video margin x mobil nezetben tul keves
+
+Altalanos:
+[ ] Events description-t mutatni ha van egy show gombbal
+[ ] CD-k mutatasa
+[X] Add last rendering time
 
 Problemak:
 [ ] NAV
+  [X] menu gombot toggle-re allitani 
+  [X] menu gombok vezessenek vissza a föoldalra legalabb, amikor mas oldalon vagyunk
+  [ ] @ => boritek
   [ ] Theme button ujra aktivalni
   [ ] Language button ujra aktivalni
