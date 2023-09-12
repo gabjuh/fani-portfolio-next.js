@@ -14,7 +14,7 @@ const Videos = ({ data }: { data: IData; }) => {
         {data.videos.map((item: IVideos, index: number) => {
           return (
 
-            <div className="mr-10 w-full" key={`video-${index}`}>
+            <div className="mr-10" key={`video-${index}`}>
 
               {/* Video */}
               <YoutubeVideo
