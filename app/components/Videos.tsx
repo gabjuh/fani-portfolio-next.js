@@ -10,11 +10,11 @@ const Videos = ({ data }: { data: IData; }) => {
     <>
       <Title title="Videos" id="videos" />
 
-      <div className="flex flex-row overflow-auto max-h-[800px] mb-36 px-10">
+      <div className="flex flex-row overflow-auto max-h-[800px] mb-36 md:px-4">
         {data.videos.map((item: IVideos, index: number) => {
           return (
 
-            <div className="mr-10 w-full" key={`video-${index}`}>
+            <div className="mx-5" key={`video-${index}`}>
 
               {/* Video */}
               <YoutubeVideo
