@@ -42,6 +42,8 @@ const Nav: React.FC<INav> = ({ data: [menu, settingsArr] }) => {
     //   scrollToId(link);
     // }
 
+    scrollToId(link);
+
     setSelectedMenuItem(link);
   };
 
