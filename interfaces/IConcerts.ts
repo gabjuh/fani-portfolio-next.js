@@ -3,9 +3,7 @@ export default interface IConcerts {
   pageTitle?: string;
   active?: string;
   id: string;
-  titleEn?: string;
-  titleDe?: string;
-  titleHu?: string;
+  title?: string;
   categoryEn?: string;
   categoryDe?: string;
   categoryHu?: string;
@@ -18,7 +16,4 @@ export default interface IConcerts {
   band?: string;
   bandLink?: string;
   concertLink?: string;
-  descriptionEn?: string;
-  descriptionDe?: string;
-  descriptionHu?: string;
 }

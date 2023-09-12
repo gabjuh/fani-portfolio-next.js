@@ -1,8 +1,46 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import MapIco from '@/assets/icos/MapIco';
 import IConcerts from '@/interfaces/IConcerts';
+import { getRandomNumberBetween } from '@/helpers/getRandomNumberBetween';
 
 const EventItem = ({ data, isPast } : {data: IConcerts, isPast: boolean }) => {
+
+  // const getDescriptionShort = (description: string, length: number) => {
+  //   const maxLength = length;
+  //   if (description.length > maxLength) {
+  //     return `${description.slice(0, maxLength)}...`;
+  //   }
+  //   return description;
+  // };
+
+  // Create a generated slug for the description in random length
+  // const descriptionSlug = data.descriptionEn ?
+  //   'event-description-' + getDescriptionShort(data.descriptionEn, getRandomNumberBetween(15, 50))
+  //     .replace(/\s+/g, '-')
+  //     .toLowerCase()
+  //   : '';
+
+  const [isDescriptionShowing, setIsDescriptionShowing] = useState<boolean>(false);
+  const [descriptionHeight, setDescriptionHeight] = useState<string>("h-[1.5rem]");
+  const [description, setDescription] = useState<string>('');
+  const shortDescriptionLength = 60;
+
+  // const handleOnClick = () => {
+  //   setIsDescriptionShowing(!isDescriptionShowing);
+  //   if (data.descriptionEn && !isDescriptionShowing) {
+  //     setDescription(getDescriptionShort(data.descriptionEn, shortDescriptionLength));
+  //     setDescriptionHeight("h-[1.5rem]");
+  //   } else if (data.descriptionEn && isDescriptionShowing) {
+  //     setDescription(data.descriptionEn);
+  //     setDescriptionHeight("h-[5rem]");
+  //   }
+  // };
+
+  // useEffect(() => {
+
+  // }, [isDescriptionShowing])
 
   const getDay = (date: string) => date.toString().slice(0, 2);
   const getYear = (date: string) => date.toString().slice(6, 10);
@@ -24,6 +62,12 @@ const EventItem = ({ data, isPast } : {data: IConcerts, isPast: boolean }) => {
     const monthName = dateObj.toLocaleString('de', { month: 'long' });
     return monthName;
   };
+
+  // useEffect(() => {
+  //   if (data.descriptionEn) {
+  //     setDescription(getDescriptionShort(data.descriptionEn, shortDescriptionLength));
+  //   }
+  // }, []);
 
   return (
     <>
@@ -74,7 +118,7 @@ const EventItem = ({ data, isPast } : {data: IConcerts, isPast: boolean }) => {
           {/* TEXTS */}
           <div className="sm:ml-6 py-4 lg:ml-[150px] sm:text-left text-center max-w-[900px]">
             {/* Band and Title */}
-            <h3 className={`text-3xl uppercase font-semibold ${isPast ? 'border-gray-400' : 'border-primary'} border-b-[5px] sm:border-none pb-2`}>{data.titleEn}</h3>
+            <h3 className={`text-3xl uppercase font-semibold ${isPast ? 'border-gray-400' : 'border-primary'} border-b-[5px] sm:border-none pb-2`}>{data.title}</h3>
             <h3 className="text-2xl font-semibold sm:mb-0 mb-2 mt-2">
               {!data.bandLink ? data.band :
                 <a className="text-secondary font-semibold hover:underline" href={data.bandLink} target="_blank">{data.band}</a>
@@ -104,9 +148,16 @@ const EventItem = ({ data, isPast } : {data: IConcerts, isPast: boolean }) => {
                 </div>
               }
 
+              {/* Description */}
+              {/* {data.descriptionEn &&
+                <div className={`mt-4 cursor-pointer transition-all ease-in-out duration-300 ${descriptionHeight}`} onClick={() => handleOnClick()} id={descriptionSlug}>
+                  <p className="text-xl font-semibold mt-2">{description}</p>
+                </div>
+              } */}
+
               {/* Location */}
               {data.location &&
-                <div className="min-h-[2rem] font-extralight mt-4 mb-5 mx-auto">
+                <div className="min-h-[2rem] font-extralight mt-3 mb-5 mx-auto">
                   <div className="inine-block">
                     <div className="">
                       {!data.locationLink ?
@@ -115,7 +166,7 @@ const EventItem = ({ data, isPast } : {data: IConcerts, isPast: boolean }) => {
                           <div className="inline-block translate-y-[5px]">
                             <MapIco />
                           </div>
-                          <span className="text-2xl ml-3">{data.location}</span>
+                          <span className="text-xl ml-3">{data.location}</span>
                         </>
                         :
 
