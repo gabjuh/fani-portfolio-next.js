@@ -41,6 +41,6 @@ Problemak:
 [ ] NAV
   [X] menu gombot toggle-re allitani 
   [X] menu gombok vezessenek vissza a föoldalra legalabb, amikor mas oldalon vagyunk
-  [ ] @ => boritek
+  [X] @ => boritek
   [ ] Theme button ujra aktivalni
   [ ] Language button ujra aktivalni
