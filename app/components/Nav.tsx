@@ -15,6 +15,7 @@ import IMenu from '../../interfaces/IMenu';
 import FlagEn from "@/assets/flags/Flag-gb";
 import FlagDe from "@/assets/flags/Flag-de";
 import FlagHu from "@/assets/flags/Flag-hu";
+import Envelope from "@/assets/icos/Envelope";
 
 const Nav: React.FC<INav> = ({ data: [menu, settingsArr] }) => {
 
@@ -237,7 +238,10 @@ const Nav: React.FC<INav> = ({ data: [menu, settingsArr] }) => {
 
           {/* Email button */}
           <div className={`md:tooltip md:tooltip-sm mx-1 ${isTooltipOpen ? `md:tooltip-open` : ''} md:tooltip-bottom`} data-tip={settings.emailTooltipTextEn}>
-            <a href={`mailto:${settings.email}`} className="btn btn-md btn-secondary text-white">@</a>
+            <a href={`mailto:${settings.email}`} className="btn btn-md px-2.5 btn-secondary text-white">
+              <Envelope />
+              {/* @ */}
+            </a>
           </div>
 
           {/* Theme toggler button */}
