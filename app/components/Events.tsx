@@ -62,11 +62,11 @@ export default function Events ({ data }: {data: IData}) {
                   isPast={false}
                 />
               )}
-              {!isAnyUpcomingEvents && (
-                <p className="text-center mt-5">Stay tuned! :-)</p>
-              )}
             </React.Fragment>
           ))}
+          {!isAnyUpcomingEvents && (
+            <p className="text-center mt-5">Stay tuned! :-)</p>
+          )}
 
           {isAnyPastEvents &&
             <>
