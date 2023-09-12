@@ -40,7 +40,7 @@ export default async function RootLayout({
           data.settings
         ]} />
         {children}
-          <Footer data={data.settings} />
+        <Footer data={data.settings} timeStamp={data.timeStamp} />
       </body>
     </html>
     // </ParallaxProvider>
