@@ -3,6 +3,8 @@
 import React, { useState, useEffect, useContext, MouseEventHandler } from "react";
 import INav from "@/interfaces/INav";
 import NavMenuItem from "./NavMenuItem";
+import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import TableIdContext from "@/providers/AppProvider";
 import Link from "next/link";
 import scrollToId from "@/helpers/scrollToId";
@@ -22,12 +24,33 @@ const Nav: React.FC<INav> = ({ data: [menu, settingsArr] }) => {
 
   const [selectedMenuItem, setSelectedMenuItem] = useState<string>('');
 
+  const router = useRouter();
+
+  const pathname = usePathname();
+
   const handleClick = (event: any, link: string) => {
     event.preventDefault();
-    scrollToId(link);
-    console.log(link);
+
+    // If we are in another page than the home page, we need to navigate to the home page first
+    if (pathname !== '/') {
+      router.push('/');
+      setTimeout(() => {
+        scrollToId(link);
+      }, 400);
+    } else {
+      scrollToId(link);
+    }
+
     setSelectedMenuItem(link);
   };
+
+  const handleMouseLeave = (event: any) => {
+    handleHideMenu();
+  };
+
+  const handleHideMenu = () => {
+    document.getElementById("dropdown-menu-details")?.removeAttribute("open");
+  }
 
   // Get the current system theme
   // const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
@@ -129,11 +152,35 @@ const Nav: React.FC<INav> = ({ data: [menu, settingsArr] }) => {
     <>
       <div className="navbar bg-base-100 z-[1500] fixed top-0 mx-auto">
         <div className="navbar-start">
-          <div className="dropdown">
+
+          <details className="dropdown lg:hidden" id="dropdown-menu-details">
+            <summary className="m-1 btn">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+            </summary>
+            <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52" id="dropdown" onMouseLeave={(e) => handleMouseLeave(e)}>
+              {menu.map((item, index) => (
+                <React.Fragment key={`menu-item-dropdown-${index}`}>
+                  {item.active === '1' && (
+                    <NavMenuItem
+                      key={index}
+                      index={index}
+                      selected={selectedMenuItem === item.link}
+                      title={item.titleEn}
+                      link={item.link}
+                      handleClick={handleClick}
+                      isDropdown={true}
+                    // handleClick={() => scrollToId(item.link.slice(2))}
+                    />
+                  )}
+                </React.Fragment>
+              ))}
+            </ul>
+          </details>
+
+          {/* <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
             </label>
-            {/* Dropdown menu */}
             <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52" id="dropdown">
               {menu.map((item, index) => (
                 <React.Fragment key={`menu-item-dropdown-${index}`}>
@@ -146,18 +193,20 @@ const Nav: React.FC<INav> = ({ data: [menu, settingsArr] }) => {
                       link={item.link}
                       handleClick={handleClick}
                       isDropdown={true}
-                    // handleClick={() => scrollToId(item.link.slice(2))} 
+                    // handleClick={() => scrollToId(item.link.slice(2))}
                     />
                   )}
                 </React.Fragment>
               ))}
             </ul>
-          </div>
+          </div> */}
+
+
           <div className="flex-1 whitespace-nowrap">
             {/* Logo/Title */}
             <Link
               href="/"
-              className="btn btn-ghost normal-case text-xl"
+              className="btn btn-ghost normal-case text-xl mx-auto"
               onClick={() => scrollToId('hero')}
             // onClick={() => handleClick(-1)}
             >{settings.homepageTitle}</Link>
@@ -188,7 +237,7 @@ const Nav: React.FC<INav> = ({ data: [menu, settingsArr] }) => {
 
           {/* Email button */}
           <div className={`md:tooltip md:tooltip-sm mx-1 ${isTooltipOpen ? `md:tooltip-open` : ''} md:tooltip-bottom`} data-tip={settings.emailTooltipTextEn}>
-            <a href={`mailto:${settings.email}`} className="btn lg:btn-md btn-sm btn-secondary text-white">@</a>
+            <a href={`mailto:${settings.email}`} className="btn btn-md btn-secondary text-white">@</a>
           </div>
 
           {/* Theme toggler button */}
