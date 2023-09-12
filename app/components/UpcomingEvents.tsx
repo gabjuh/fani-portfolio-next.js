@@ -64,7 +64,7 @@ function UpcomingEvents({ data }: { data: IConcerts[]; }) {
                 <li className="group text-sm mt-1 cursor-pointer hover:bg-gray-500/[.3] transition-all ease-in-out duration-200 rounded-lg p-2" key={`event-hero-${index}`} onClick={() => onClickEventHandler(event.id)}>
                   {/* Title */}
                   <p className="group-hover:text-secondary transition-all ease-in-out duration-200">
-                    <span className="text-xl font-bold uppercase">{event.titleEn}</span>
+                    <span className="text-xl font-bold uppercase">{event.title}</span>
                   </p>
                   {/* Band */}
                   <p>
