@@ -50,7 +50,7 @@ const YoutubeVideo: React.FC<IYoutubeVideo> = ({
               <img
                 alt="Fwar - Mushrooms video thumbnail"
                 src={thumbnailUrl}
-                className="w-full"
+                className="w-full overflow-hidden h-full object-cover"
                 loading="lazy"
               />
               <img
