@@ -33,16 +33,15 @@ const Nav: React.FC<INav> = ({ data: [menu, settingsArr] }) => {
     event.preventDefault();
 
     // If we are in another page than the home page, we need to navigate to the home page first
-    // if (pathname !== '/') {
-    //   router.push('/');
-    //   setTimeout(() => {
-    //     scrollToId(link);
-    //   }, 400);
-    // } else {
-    //   scrollToId(link);
-    // }
-
-    scrollToId(link);
+    if (pathname !== '/') {
+      router.push('/');
+      // const interval = setTimeout(() => {
+      scrollToId(link);
+      // }, 400);
+      // return () => clearInterval(interval);
+    } else {
+      scrollToId(link);
+    }
 
     setSelectedMenuItem(link);
   };
