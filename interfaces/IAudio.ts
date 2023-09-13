@@ -4,7 +4,7 @@ export default interface IAudio {
   domain: string;
   active: '1' | '0';
   id: number;
-  fileName: string;
+  fileName?: string;
   folderName?: string;
   title?: string;
   label?: string;
