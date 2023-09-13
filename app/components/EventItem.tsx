@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import MapIco from '@/assets/icos/MapIco';
 import IConcerts from '@/interfaces/IConcerts';
 import { getRandomNumberBetween } from '@/helpers/getRandomNumberBetween';
+import ClockIco from '@/assets/icos/ClockIco';
 
 const EventItem = ({ data, isPast } : {data: IConcerts, isPast: boolean }) => {
 
@@ -71,12 +72,13 @@ const EventItem = ({ data, isPast } : {data: IConcerts, isPast: boolean }) => {
 
   return (
     <>
-      <div className="relative cursor-default lg:pt-[80px] pt-0 lg:pb-[30px] pb-[30px]" id={`event-main-${data.id}`}>
+      <div className="relative cursor-default lg:pt-[80px] pt-0 lg:pb-[30px] pb-[30px] mt-10 xs:mt-0" id={`event-main-${data.id}`}>
         <div className="sm:flex sm:flex-row mx-auto max-w-[900px]">
           {/* DATE */}
-          <div className={`relative pt-3 lg:w-[50px] sm:pl-2 ${isPast ? 'sm:border-gray-400' : 'border-primary'} sm:border-l-[25px] sm:border-b-[0px] sm:rounded-[10px] sm:min-h-[8rem] text-center`}>
+          <div className={`relative pt-3 lg:w-[50px] sm:pl-2 ${isPast ? 'sm:border-gray-400' : 'border-primary'} sm:border-l-[25px] sm:border-b-[0px] sm:rounded-[10px] sm:min-h-[8rem] text-center mx-5`}>
             <div className="sm:w-[140px] mx-auto text-center sm:text-left">
-              <div className="absolute inline-block origin-center -rotate-90 text-xl -left-[37px] text-white top-[50%] -translate-y-[50%] ">
+              {/* Year */}
+              <div className="absolute hidden sm:inline-block origin-center -rotate-90 text-xl -left-[35px] text-white top-[50%] -translate-y-[50%] ">
                 {getYear(data.startDate)}
               </div>
 
@@ -138,12 +140,12 @@ const EventItem = ({ data, isPast } : {data: IConcerts, isPast: boolean }) => {
               {data.startTime &&
                 <div className="relative h-[1.6rem] my-2.5 sm:mt-0 sm:hidden">
                   <div className="absolute left-[50%] -translate-x-[50%] sm:left-0 sm:translate-x-0">
-                    {/* <div className="flex">
-                      <div className="translate-y-[1px]">
+                    <div className="flex">
+                      <div className="translate-y-[5px] mr-2">
                         <ClockIco />
-                      </div> */}
+                      </div>
                     <span className="text-2xl">{data.startTime}</span>
-                    {/* </div> */}
+                    </div>
                   </div>
                 </div>
               }
