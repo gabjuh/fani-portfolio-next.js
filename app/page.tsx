@@ -24,7 +24,7 @@ export default async function HomePage() {
     <main className="">
       <Hero data={data} />
       <About data={data} />
-      <Audio data={data} />
+      {/* <Audio data={data} /> */}
       <Events data={data} />
       {/* <ImageSlider data={data} /> */}
       <Videos data={data} />
