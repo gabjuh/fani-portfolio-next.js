@@ -216,7 +216,7 @@ const Nav: React.FC<INav> = ({ data: [menu, settingsArr] }) => {
         </div>
         <div className="hidden lg:flex">
           {/* Horisontal menu */}
-          <ul className="flex flex-row px-1">
+          <ul className="flex flex-row px-1 mt-1.5">
             {menu.map((item, index) => (
               <React.Fragment key={`menu-item-${index}`}>
                 {item.active === '1' && (
