@@ -1,11 +1,14 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Roboto } from 'next/font/google';
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import { ParallaxProvider } from 'react-scroll-parallax'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Roboto({
+  weight: ['100', '300', '400', '500', '700', '900'],
+  subsets: ['latin']
+})
 
 export const metadata: Metadata = {
   title: 'Portfolio - Franciska Hajdu',
