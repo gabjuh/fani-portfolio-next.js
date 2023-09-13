@@ -75,7 +75,7 @@ function UpcomingEvents({ data }: { data: IConcerts[]; }) {
                     <span className="font-bold">{event.startDate}</span> {event.startTime},
                     <span className="font-extralight"> {event.location}</span>
                   </p>
-                  {index < eventLimit - 1 && comingEvents.length != 1 && index !== comingEvents.length - 1 && <hr className="mt-5 opacity-40" />}
+                  {index < eventLimit - 1 && comingEvents.length != 1 && index !== comingEvents.length - 1 && <hr className="mt-5 opacity-40 hidden lg:block" />}
                 </li>
               );
             }
