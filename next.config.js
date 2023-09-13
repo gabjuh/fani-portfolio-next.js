@@ -8,6 +8,12 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'discography-franciskahajdu.web4musicians.eu',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 }
