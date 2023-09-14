@@ -26,7 +26,7 @@ const ImageAndText: React.FC<IImageAndText> = ({
             className={`${imageLeft ? textAlign === 'justify' ? 'md:text-justify' : 'md:text-left' : textAlign === 'justify' ? 'md:text-justify' : 'md:text-right'} md:ml-10 lg:ml-0 lg:mr-0 text-center leading-8 px-8 md:p-0`}
           >
             {/* {title && <Title title={title} className="md:text-right uppercase text-4xl" />} */}
-            {title && <h2 className="md:text-right uppercase text-4xl mb-3">{title}</h2>}
+            {title && <h2 className={`${imageLeft ? 'md:text-left' : 'md:text-right'} uppercase text-4xl mb-3`}>{title}</h2>}
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               children={text}
