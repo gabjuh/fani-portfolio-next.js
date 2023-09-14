@@ -7,7 +7,7 @@ import IConcerts from '@/interfaces/IConcerts';
 
 function UpcomingEvents({ data }: { data: IConcerts[]; }) {
 
-  const eventLimit = 5;
+  const eventLimit = 4;
 
   const stringToDate = (date: string | undefined) => {
     if (date) {
@@ -24,8 +24,8 @@ function UpcomingEvents({ data }: { data: IConcerts[]; }) {
   const today = new Date();
 
   const getUpcomingEvents = () => {
-    const upcomingEvents = data.filter((event) => {
-      if (event) {
+    const upcomingEvents = data.filter((event, index) => {
+      if (event && index < eventLimit) {
         const date = new Date(stringToDate(event ? event.startDate : ''));
         return date >= today;
       }
@@ -46,9 +46,9 @@ function UpcomingEvents({ data }: { data: IConcerts[]; }) {
   return (
     <>
       <UpcomingEventsWrapper>
-        <div className="lg:hidden">
+        {/* <div className="lg:hidden">
           <Title title="Upcoming Concerts" />
-        </div>
+        </div> */}
         <h3 className="text-xl lg:block hidden pl-2">Upcoming Concerts:</h3>
         <ul className="mt-2">
 
