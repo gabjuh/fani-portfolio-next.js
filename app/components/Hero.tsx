@@ -38,7 +38,8 @@ export default async function Hero({ data }: { data: IData; }) {
           fill
           sizes="(min-width: 508px) 30vw, 80vw"
           style={{
-            objectFit: 'cover'
+            objectFit: 'cover',
+            objectPosition: 'right',
           }}
         />
         <UpcomingEvents data={data.concerts} />
