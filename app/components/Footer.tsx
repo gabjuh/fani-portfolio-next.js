@@ -16,7 +16,7 @@ const Footer: React.FC<IFooter> = ({ data, timeStamp }) => {
         <div className="text-right pr-5">
           <p className="text-[.75rem] text-gray-400">{data[0].copyright}</p>
           <p className="text-[.75rem] text-gray-400">Designed by <a href="https://gaborjuhasz.de">Gábor Juhász</a></p>
-          <p className="text-[.75rem] text-gray-400"><a href="https://github.com/gabjuh/fani-portfolio">a React/NextJS Project</a></p>
+          <p className="text-[.75rem] text-gray-400"><a href="https://github.com/gabjuh/fani-portfolio-next.js">a React/NextJS Project</a></p>
           <p className="text-[.75rem] text-gray-400">Last rendering: {timeStamp}</p>
         </div>
 
