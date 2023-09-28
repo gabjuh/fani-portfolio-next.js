@@ -4,14 +4,34 @@ import Title from './Title';
 import IVideos from '../../interfaces/IVideos';
 import IData from '@/interfaces/IData';
 
+const getVideoId = (link: string): string => {
+  const id = link.match(/[A-Za-z0-9_-]{11}/);
+
+  if (id) {
+    return id[0];
+  }
+
+  return "";
+}
+
 const Videos = ({ data }: { data: IData; }) => {
+
+  // sort video objects in increasing order of data.video.id-s
+  const videos = data.videos.sort((a, b) => {
+    return b.id - a.id;
+  });
+
+  const activeVideos = videos.filter((item: IVideos) => item.active === '1');
 
   return (
     <>
       <Title title="Videos" id="videos" className="pb-20" />
 
       <div className="flex flex-row overflow-auto max-h-[800px] pb-20 mb-10 md:px-4">
-        {data.videos.map((item: IVideos, index: number) => {
+        {activeVideos.map((item: IVideos, index: number) => {
+
+          const videoId = getVideoId(item.youtubeId);
+
           return (
 
             <div className="mx-5" key={`video-${index}`}>
@@ -19,7 +39,7 @@ const Videos = ({ data }: { data: IData; }) => {
               {/* Video */}
               <YoutubeVideo
                 key={`video-${index}`}
-                youtubeId={item.youtubeId}
+                youtubeId={videoId}
                 quality={item.quality}
               />
 
