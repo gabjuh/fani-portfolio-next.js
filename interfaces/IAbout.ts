@@ -6,6 +6,8 @@ export default interface IAbout {
   imgAlt?: string;
   imgLeft?: 'TRUE' | 'FALSE';
   text: string;
+  textDe: string;
+  textHu: string;
   textAlign?: 'auto' | 'justify';
   buttonText?: string;
 }

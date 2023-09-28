@@ -14,7 +14,7 @@ const About = ({ data } : {data: IData}) => {
         alt={data.about[0].imgAlt}
         imageLeft={data.about[0].imgLeft === 'TRUE' ? true : false}
         classNameForImg="rounded-md"
-        text={data.about[0].text}
+        text={data.about[0].textDe}
         textAlign={data.about[0].textAlign}
         buttonText={data.about[0].buttonText}
       />
