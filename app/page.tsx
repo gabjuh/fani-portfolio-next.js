@@ -3,7 +3,6 @@ import Hero from "./components/Hero";
 import Events from "./components/Events";
 import About from "./components/About";
 import Videos from './components/Videos';
-import ImageSlider from "./components/ImageSlider";
 import Audio from "./components/Audio";
 
 export default async function HomePage() {
@@ -26,7 +25,6 @@ export default async function HomePage() {
       <About data={data} />
       {/* <Audio data={data} /> */}
       <Events data={data} />
-      {/* <ImageSlider data={data} /> */}
       <Videos data={data} />
     </main>
   )
