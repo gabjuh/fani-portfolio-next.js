@@ -13,12 +13,27 @@ export default function Events ({ data }: {data: IData}) {
     return '01.01.1900';
   };
 
+  // const getActualEvents = () => {
+  //   const today = new Date();
+  //   today.setHours(0, 0, 0, 0); // Set the time to midnight
+  
+  //   return data?.filter((event) => {
+  //     if (event) {
+  //       const eventDate = new Date(stringToDate(event ? event.startDate : ''));
+  //       eventDate.setHours(0, 0, 0, 0); // Set the time to midnight for the event date
+  //       return eventDate >= today;
+  //     }
+  //   });
+  // };
+
   const getUpcomingEvents = () => {
     const upcomingEvents = data.concerts.filter((event) => {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0); // Set the time to midnight
       if (event) {
-        const date = new Date(stringToDate(event ? event.startDate : ''));
-        const today = new Date();
-        return date >= today;
+        const eventDate = new Date(stringToDate(event ? event.startDate : ''));
+        eventDate.setHours(0, 0, 0, 0); // Set the time to midnight for the event date
+        return eventDate >= today;
       }
     });
 
@@ -30,10 +45,12 @@ export default function Events ({ data }: {data: IData}) {
 
   const getPastEvents = () => {
     const pastEvents = data.concerts.filter((event) => {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0); // Set the time to midnight
       if (event) {
-        const date = new Date(stringToDate(event ? event.startDate : ''));
-        const today = new Date();
-        return date < today;
+        const eventDate = new Date(stringToDate(event ? event.startDate : ''));
+        eventDate.setHours(0, 0, 0, 0); // Set the time to midnight for the event date
+        return eventDate < today;
       }
     });
 
