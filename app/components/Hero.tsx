@@ -1,9 +1,14 @@
 import IData from '@/interfaces/IData';
 import Image from 'next/image';
-import getBase64 from '@/helpers/getPlaiceholder';
+// import getBase64 from '@/helpers/getPlaiceholder';
 import UpcomingEvents from './UpcomingEvents';
+<<<<<<< HEAD
 import ParallaxBannerImage from './ParallaxBannerImage';
 import getDriveId from '@/helpers/getDriveId';
+=======
+// import ParallaxBannerImage from './ParallaxBannerImage';
+// import getDriveId from '@/helpers/getDriveId';
+>>>>>>> 2066e903f57955de18efcc19c14d88cad72fa156
 
 export default async function Hero({ data }: { data: IData; }) {
 
@@ -18,7 +23,6 @@ export default async function Hero({ data }: { data: IData; }) {
   // const myBlurDataUrl = await getBase64(hero[0].fileName);
 
   // console.log(myBlurDataUrl);
-
   return (
     <>
       <div className="relative h-[90vh] mt-[60px]" id="hero">
@@ -46,5 +50,6 @@ export default async function Hero({ data }: { data: IData; }) {
         <UpcomingEvents data={data.concerts} />
       </div>
     </>
+
   )
 }

@@ -4,6 +4,7 @@ import scrollToId from '@/helpers/scrollToId';
 import UpcomingEventsWrapper from './UpcomingEventsWrapper';
 import Title from './Title';
 import IConcerts from '@/interfaces/IConcerts';
+import React from 'react';
 
 function UpcomingEvents({ data }: { data: IConcerts[]; }) {
 
@@ -14,7 +15,7 @@ function UpcomingEvents({ data }: { data: IConcerts[]; }) {
       const dateArray = date.split('.');
       return `${dateArray[1]}/${dateArray[0]}/${dateArray[2]}`;
     }
-    return '1900.01.01';
+    return '01.01.1900';
   };
 
   function onClickEventHandler(eventId: string) {
@@ -24,16 +25,18 @@ function UpcomingEvents({ data }: { data: IConcerts[]; }) {
   const today = new Date();
 
   const getUpcomingEvents = () => {
-    const upcomingEvents = data.filter((event, index) => {
-      if (event && index < eventLimit) {
-        const date = new Date(stringToDate(event ? event.startDate : ''));
-        return date >= today;
+    const upcomingEvents = data.filter((event) => {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0); // Set the time to midnight
+      if (event) {
+        const eventDate = new Date(stringToDate(event ? event.startDate : ''));
+        eventDate.setHours(0, 0, 0, 0); // Set the time to midnight for the event date
+        return eventDate >= today;
       }
     });
 
     // Sort the upcoming events in an ascending order
     upcomingEvents.sort((a: any, b: any) => new Date(stringToDate(a.startDate)).getTime() - new Date(stringToDate(b.startDate)).getTime());
-
     return upcomingEvents;
   };
 
@@ -55,11 +58,10 @@ function UpcomingEvents({ data }: { data: IConcerts[]; }) {
           {!isAnyUpcomingEvents && (<p className="mt-4 ml-2">Stay tuned! :-)</p>)}
 
           {comingEvents.map((event: any, index: number) => {
-            console.log(index);
 
             const date = new Date(stringToDate(event.startDate));
 
-            if (index < 5 && event.active === '1' && date >= today) {
+            if (index < eventLimit && event.active === '1' && date >= today) {
               return (
                 <li className="group text-sm mt-1 cursor-pointer hover:bg-gray-500/[.3] transition-all ease-in-out duration-200 rounded-lg p-2" key={`event-hero-${index}`} onClick={() => onClickEventHandler(event.id)}>
                   {/* Title */}
