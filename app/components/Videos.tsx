@@ -3,16 +3,7 @@ import YoutubeVideo from './YoutubeVideo';
 import Title from './Title';
 import IVideos from '../../interfaces/IVideos';
 import IData from '@/interfaces/IData';
-
-const getVideoId = (link: string): string => {
-  const id = link.match(/[A-Za-z0-9_-]{11}/);
-
-  if (id) {
-    return id[0];
-  }
-
-  return "";
-}
+import getVideoId from '@/helpers/getVideoId';
 
 const Videos = ({ data }: { data: IData; }) => {
 

@@ -3,6 +3,7 @@ import Image from 'next/image';
 import getBase64 from '@/helpers/getPlaiceholder';
 import UpcomingEvents from './UpcomingEvents';
 import ParallaxBannerImage from './ParallaxBannerImage';
+import getDriveId from '@/helpers/getDriveId';
 
 export default async function Hero({ data }: { data: IData; }) {
 
