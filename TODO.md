@@ -18,8 +18,8 @@
   [X] A tablazatot mielöbb hozza igazitani
   
 OTTHON:
-[ ] Fotokat összeszedni jo minösegben
-[ ] Szineket veglegesiteni a fotok alapjak
+[X] Fotokat összeszedni jo minösegben
+[X] Szineket veglegesiteni a fotok alapjak
 [ ] Hero image to parallax WIP (ParallaxProvider should be in a client side component)
 
 [ ] Set deploy production / next branche
@@ -28,13 +28,13 @@ OTTHON:
 Mobile view:
 [-] logo közepre rendez
 [X] nyomott ikon
-[ ] events - lehetne picit kisebb es finomabb font
+[X] events - lehetne picit kisebb es finomabb font
 [ ] elrejteni a past concerts veget es gombbal megmutatni
 [X] video margin x mobil nezetben tul keves
 
 Altalanos:
-[ ] Events description-t mutatni ha van egy show gombbal
-[ ] CD-k mutatasa
+[-] Events description-t mutatni ha van egy show gombbal
+[?] CD-k mutatasa
 [X] Add last rendering time
 
 Problemak:
@@ -44,3 +44,12 @@ Problemak:
   [X] @ => boritek
   [ ] Theme button ujra aktivalni
   [ ] Language button ujra aktivalni
+
+  Uj, amit Fanival beszeltünk:
+  [ ] About-ot nemetre allitani
+  [X] Videok teljes linkkel
+  [ ] kepek teljes linkkel
+  [ ] kepek csereje egyszerüen
+  [ ] hero events kapcsolasa jobbra/balra
+  [X] Videok a megadott sorrendben legyenek
+    [ ] Ha az ID egyforma, legyen ABC sorrendben
