@@ -4,8 +4,13 @@ import Events from "./components/Events";
 import About from "./components/About";
 import Videos from './components/Videos';
 import Audio from "./components/Audio";
+import Maintenance from "./components/Maintenance";
+import { showMaintenance } from "./maintenance.server";
 
 export default async function HomePage() {
+
+  // TEMPORARY: website is being reworked (see maintenance.config.ts)
+  if (showMaintenance()) return <Maintenance />;
 
   async function getData() {
     const res = await fetch(`https://${process.env.NEXT_PUBLIC_BACKEND_API}/data.json`,

@@ -2,13 +2,8 @@ import IData from '@/interfaces/IData';
 import Image from 'next/image';
 // import getBase64 from '@/helpers/getPlaiceholder';
 import UpcomingEvents from './UpcomingEvents';
-<<<<<<< HEAD
-import ParallaxBannerImage from './ParallaxBannerImage';
-import getDriveId from '@/helpers/getDriveId';
-=======
 // import ParallaxBannerImage from './ParallaxBannerImage';
 // import getDriveId from '@/helpers/getDriveId';
->>>>>>> 2066e903f57955de18efcc19c14d88cad72fa156
 
 export default async function Hero({ data }: { data: IData; }) {
 
